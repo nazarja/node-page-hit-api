@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Page Hit Counter</title>
+</head>
+
+<body>
+
+    <p>This page has been viewed <span id="count">0</span> times.</p>
+
+    <script>
+        // json
+
+        fetch('http://localhost:3000/json', {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+            },
+        })
+            .then(res => res.json())
+            .then(data => {
+                document.querySelector('#count').innerText = data.count ?? 0;
+            })
+            .catch(err => console.log(err));
+
+        // javascript
+
+        // fetch('http://localhost:3000/js', {
+        //     method: 'GET',
+        //     headers: {
+        //         'Accept': 'application/javascript',
+        //     },
+        // })
+        //     .then(res => res.text())
+        //     .then(data => {
+        //         document.querySelector('#count').innerText = eval(data);
+        //     })
+        //     .catch(err => console.log(err));
+
+        // plain text
+
+        // fetch('http://localhost:3000/text', {
+        //     method: 'GET',
+        //     headers: {
+        //         'Accept': 'text/plain',
+        //     },
+        // })
+        //     .then(res => res.text())
+        //     .then(data => {
+        //         document.querySelector('#count').innerText = data;
+        //     })
+        //     .catch(err => console.log(err));
+    </script>
+    
+</body>
+
+</html>
